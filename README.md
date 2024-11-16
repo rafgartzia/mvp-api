@@ -1,2 +1,2 @@
-# mvp
-Repositório com o MVP da disciplina Dev. Full Stack Básico - Eng. Software PUC RIO
+# mvp-api
+Repositório com o projeto da API do MPV - disciplina Dev. Full Stack Básico - Eng. Software PUC RIO
