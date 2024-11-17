@@ -15,7 +15,7 @@ CORS(app)
 
 # definindo tags
 home_tag = Tag(name="Documentação", description="Seleção de documentação: Swagger, Redoc ou RapiDoc")
-progressao_tag = Tag(name="PrProgressão", description="Adição, visualização e remoção de progressões à base")
+progressao_tag = Tag(name="Progressão", description="Adição, visualização e remoção de progressões à base")
 #comentario_tag = Tag(name="Comentario", description="Adição de um comentário à um progressoes cadastrado na base")
 
 
@@ -48,29 +48,29 @@ def add_progressao(form: ProgressaoSchema):
         # efetivando o camando de adição de novo item na tabela
         session.commit()
         logger.debug(f"Adicionada progressão: '{progressao.cod_mapa}' - '{progressao.texto}'")
-        return apresenta_produto(progressao), 200
+        return apresenta_progressao(progressao), 200
 
     except IntegrityError as e:
         # como a duplicidade do nome é a provável razão do IntegrityError
         error_msg = "Progressão já salva na base :/"
         logger.warning(f"Erro ao adicionar progressao '{progressao.cod_mapa}' - '{progressao.texto}'', {error_msg}")
-        return {"mesage": error_msg}, 409
+        return {"message": error_msg}, 409
 
     except Exception as e:
         # caso um erro fora do previsto
         error_msg = "Não foi possível salvar novo item :/"
-        logger.warning(f"Erro ao adicionar  progressão: '{progressao.cod_mapa}' - '{progressao.texto}', {error_msg}")
-        return {"mesage": error_msg}, 400
+        logger.warning(f"Erro ao adicionar progressão: '{progressao.cod_mapa}' - '{progressao.texto}', {error_msg}")
+        return {"message": error_msg}, 400
 
 
-@app.get('/progressao', tags=[produto_tag],
+@app.get('/progressao', tags=[progressao_tag],
          responses={"200": ListagemProgressoesSchema, "404": ErrorSchema})
 def get_progressao():
-    """Faz a busca por todos os Progressao cadastrados
+    """Faz a busca por todos as progressões cadastrados
 
-    Retorna uma representação da listagem de progressoes.
+    Retorna uma representação da listagem de progressões.
     """
-    logger.debug(f"Coletando progressoes ")
+    logger.debug(f"Coletando progressões ")
     # criando conexão com a base
     session = Session()
     # fazendo a busca
@@ -80,61 +80,61 @@ def get_progressao():
         # se não há progressoes cadastrados
         return {"progressoes": []}, 200
     else:
-        logger.debug(f"%d rodutos econtrados" % len(progressoes))
+        logger.debug(f"%d Progressões encontradas" % len(progressoes))
         # retorna a representação de progressao
         print(progressoes)
         return apresenta_progressoes(progressoes), 200
 
 
-@app.get('/progressao', tags=[produto_tag],
+@app.get('/progressao', tags=[progressao_tag],
          responses={"200": ProgressaoViewSchema, "404": ErrorSchema})
-def get_produto(query: ProgressaoBuscaSchema):
-    """Faz a busca por um Progressao a partir do id do progressao
+def get_progressao(query: ProgressaoBuscaSchema):
+    """Faz a busca por uma progressao a partir do id do progressao
 
     Retorna uma representação dos progressoes e comentários associados.
     """
-    produto_id = query.id
-    logger.debug(f"Coletando dados sobre progressao #{produto_id}")
+    progressao_id = query.id
+    logger.debug(f"Coletando dados sobre progressao #{progressao_id}")
     # criando conexão com a base
     session = Session()
     # fazendo a busca
-    progressao = session.query(Progressao).filter(Progressao.id == produto_id).first()
+    progressao = session.query(Progressao).filter(Progressao.id == progressao_id).first()
 
     if not progressao:
         # se o progressao não foi encontrado
         error_msg = "Progressao não encontrado na base :/"
-        logger.warning(f"Erro ao buscar progressao '{produto_id}', {error_msg}")
+        logger.warning(f"Erro ao buscar progressao '{progressao_id}', {error_msg}")
         return {"mesage": error_msg}, 404
     else:
         logger.debug(f"Progressao econtrado: '{progressao.nome}'")
         # retorna a representação de progressao
-        return apresenta_produto(progressao), 200
+        return apresenta_progressao(progressao), 200
 
 
-@app.delete('/progressao', tags=[produto_tag],
+@app.delete('/progressao', tags=[progressao_tag],
             responses={"200": ProgressaoDelSchema, "404": ErrorSchema})
-def del_produto(query: ProgressaoBuscaSchema):
+def del_progressao(query: ProgressaoBuscaSchema):
     """Deleta um Progressao a partir do nome de progressao informado
 
     Retorna uma mensagem de confirmação da remoção.
     """
-    produto_nome = unquote(unquote(query.nome))
-    print(produto_nome)
-    logger.debug(f"Deletando dados sobre progressao #{produto_nome}")
+    progressao_nome = unquote(unquote(query.nome))
+    print(progressao_nome)
+    logger.debug(f"Deletando dados sobre progressao #{progressao_nome}")
     # criando conexão com a base
     session = Session()
     # fazendo a remoção
-    count = session.query(Progressao).filter(Progressao.nome == produto_nome).delete()
+    count = session.query(Progressao).filter(Progressao.nome == progressao_nome).delete()
     session.commit()
 
     if count:
         # retorna a representação da mensagem de confirmação
-        logger.debug(f"Deletado progressao #{produto_nome}")
-        return {"mesage": "Progressao removido", "id": produto_nome}
+        logger.debug(f"Deletado progressao #{progressao_nome}")
+        return {"mesage": "Progressao removido", "id": progressao_nome}
     else:
         # se o progressao não foi encontrado
         error_msg = "Progressao não encontrado na base :/"
-        logger.warning(f"Erro ao deletar progressao #'{produto_nome}', {error_msg}")
+        logger.warning(f"Erro ao deletar progressao #'{progressao_nome}', {error_msg}")
         return {"mesage": error_msg}, 404
 
 
@@ -145,17 +145,17 @@ def add_comentario(form: ComentarioSchema):
 
     Retorna uma representação dos progressoes e comentários associados.
     """
-    produto_id  = form.produto_id
-    logger.debug(f"Adicionando comentários ao progressao #{produto_id}")
+    progressao_id  = form.progressao_id
+    logger.debug(f"Adicionando comentários ao progressao #{progressao_id}")
     # criando conexão com a base
     session = Session()
     # fazendo a busca pelo progressao
-    progressao = session.query(Progressao).filter(Progressao.id == produto_id).first()
+    progressao = session.query(Progressao).filter(Progressao.id == progressao_id).first()
 
     if not progressao:
         # se progressao não encontrado
         error_msg = "Progressao não encontrado na base :/"
-        logger.warning(f"Erro ao adicionar comentário ao progressao '{produto_id}', {error_msg}")
+        logger.warning(f"Erro ao adicionar comentário ao progressao '{progressao_id}', {error_msg}")
         return {"mesage": error_msg}, 404
 
     # criando o comentário
@@ -166,7 +166,7 @@ def add_comentario(form: ComentarioSchema):
     progressao.adiciona_comentario(comentario)
     session.commit()
 
-    logger.debug(f"Adicionado comentário ao progressao #{produto_id}")
+    logger.debug(f"Adicionado comentário ao progressao #{progressao_id}")
 
     # retorna a representação de progressao
-    return apresenta_produto(progressao), 200
+    return apresenta_progressao(progressao), 200
