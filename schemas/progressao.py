@@ -2,7 +2,6 @@ from pydantic import BaseModel
 from typing import Optional, List
 from model.progressao import Progressao
 
-#from schemas import ComentarioSchema
 
 
 class ProgressaoSchema(BaseModel):
