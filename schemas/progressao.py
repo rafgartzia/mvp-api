@@ -20,7 +20,7 @@ class ProgressaoBuscaSchema(BaseModel):
     cod_mapa: int = 10
 
 
-class ListagemProgressaoSchema(BaseModel):
+class ListagemProgressoesSchema(BaseModel):
     """ Define como uma listagem de produtos será retornada.
     """
     progressoes:List[ProgressaoSchema]

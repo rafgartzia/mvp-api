@@ -16,7 +16,7 @@ CORS(app)
 # definindo tags
 home_tag = Tag(name="Documentação", description="Seleção de documentação: Swagger, Redoc ou RapiDoc")
 progressao_tag = Tag(name="Progressão", description="Adição, visualização e remoção de progressões à base")
-#comentario_tag = Tag(name="Comentario", description="Adição de um comentário à um progressoes cadastrado na base")
+
 
 
 @app.get('/', tags=[home_tag])
@@ -136,37 +136,3 @@ def del_progressao(query: ProgressaoBuscaSchema):
         error_msg = "Progressao não encontrado na base :/"
         logger.warning(f"Erro ao deletar progressao #'{progressao_nome}', {error_msg}")
         return {"mesage": error_msg}, 404
-
-
-@app.post('/cometario', tags=[comentario_tag],
-          responses={"200": ProgressaoViewSchema, "404": ErrorSchema})
-def add_comentario(form: ComentarioSchema):
-    """Adiciona de um novo comentário à um progressoes cadastrado na base identificado pelo id
-
-    Retorna uma representação dos progressoes e comentários associados.
-    """
-    progressao_id  = form.progressao_id
-    logger.debug(f"Adicionando comentários ao progressao #{progressao_id}")
-    # criando conexão com a base
-    session = Session()
-    # fazendo a busca pelo progressao
-    progressao = session.query(Progressao).filter(Progressao.id == progressao_id).first()
-
-    if not progressao:
-        # se progressao não encontrado
-        error_msg = "Progressao não encontrado na base :/"
-        logger.warning(f"Erro ao adicionar comentário ao progressao '{progressao_id}', {error_msg}")
-        return {"mesage": error_msg}, 404
-
-    # criando o comentário
-    texto = form.texto
-    comentario = Comentario(texto)
-
-    # adicionando o comentário ao progressao
-    progressao.adiciona_comentario(comentario)
-    session.commit()
-
-    logger.debug(f"Adicionado comentário ao progressao #{progressao_id}")
-
-    # retorna a representação de progressao
-    return apresenta_progressao(progressao), 200
