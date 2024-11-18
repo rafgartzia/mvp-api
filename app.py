@@ -14,9 +14,10 @@ app = OpenAPI(__name__, info=info)
 CORS(app)
 
 # definindo tags
-home_tag = Tag(name="Documentação", description="Seleção de documentação: Swagger, Redoc ou RapiDoc")
-progressao_tag = Tag(name="Progressão", description="Adição, visualização e remoção de progressão à base")
-
+home_tag = Tag(name="Documentação",
+               description="Seleção de documentação: Swagger, Redoc ou RapiDoc")
+progressao_tag = Tag(
+    name="Progressão", description="Adição, visualização e remoção de progressão à base")
 
 
 @app.get('/', tags=[home_tag])
@@ -53,14 +54,17 @@ def add_progressao(form: ProgressaoSchema):
     except IntegrityError as e:
         # como a duplicidade do nome é a provável razão do IntegrityError
         error_msg = "Progressão já existente na base :/"
-        logger.warning(f"Erro ao adicionar progressão '{progressao.texto}', {error_msg}")
+        logger.warning(f"Erro ao adicionar progressão '{
+                       progressao.texto}', {error_msg}")
         return {"mesage": error_msg}, 409
 
     except Exception as e:
         # caso um erro fora do previsto
         error_msg = "Não foi possível salvar novo item :/"
-        logger.warning(f"Erro ao adicionar progressão '{progressao.texto}', {error_msg}")
+        logger.warning(f"Erro ao adicionar progressão '{
+                       progressao.texto}', {error_msg}")
         return {"mesage": error_msg}, 400
+
 
 @app.get('/progressoes', tags=[progressao_tag],
          responses={"200": ListagemProgressoesSchema, "404": ErrorSchema})
@@ -83,29 +87,32 @@ def get_progressoes():
         print(progressoes)
         return apresenta_progressoes(progressoes), 200
 
-@app.get('/produto', tags=[produto_tag],
-         responses={"200": ProdutoViewSchema, "404": ErrorSchema})
-def get_produto(query: ProdutoBuscaSchema):
-    """Faz a busca por um Produto a partir do id do produto
+
+@app.get('/produto', tags=[progressao_tag],
+         responses={"200": ProgressaoViewSchema, "404": ErrorSchema})
+def get_produto(query: ProgressaoBuscaSchema):
+    """Faz a busca por uma progressão.
 
     Retorna uma representação dos produtos e comentários associados.
     """
-    produto_id = query.id
-    logger.debug(f"Coletando dados sobre produto #{produto_id}")
+    progressao_id = query.id
+    logger.debug(f"Coletando dados sobre a progressão #{progressao_id}")
     # criando conexão com a base
     session = Session()
     # fazendo a busca
-    produto = session.query(Produto).filter(Produto.id == produto_id).first()
+    progressao = session.query(Progressao).filter(
+        Progressao.id == progressao_id).first()
 
-    if not produto:
-        # se o produto não foi encontrado
-        error_msg = "Produto não encontrado na base :/"
-        logger.warning(f"Erro ao buscar produto '{produto_id}', {error_msg}")
+    if not progressao:
+        # se a progressão não foi encontrada
+        error_msg = "Progressao não encontrado na base :/"
+        logger.warning(f"Erro ao buscar progressão '{
+                       progressao_id}', {error_msg}")
         return {"mesage": error_msg}, 404
     else:
-        logger.debug(f"Produto econtrado: '{produto.nome}'")
-        # retorna a representação de produto
-        return apresenta_produto(produto), 200
+        logger.debug(f"Progressão encontrada: '{progressao.nome}'")
+        # retorna a representação da progressão
+        return apresenta_progressao(progressao), 200
 
 
 @app.delete('/produto', tags=[produto_tag],
@@ -121,7 +128,8 @@ def del_produto(query: ProdutoBuscaSchema):
     # criando conexão com a base
     session = Session()
     # fazendo a remoção
-    count = session.query(Produto).filter(Produto.nome == produto_nome).delete()
+    count = session.query(Produto).filter(
+        Produto.nome == produto_nome).delete()
     session.commit()
 
     if count:
@@ -131,7 +139,6 @@ def del_produto(query: ProdutoBuscaSchema):
     else:
         # se o produto não foi encontrado
         error_msg = "Produto não encontrado na base :/"
-        logger.warning(f"Erro ao deletar produto #'{produto_nome}', {error_msg}")
+        logger.warning(f"Erro ao deletar produto #'{
+                       produto_nome}', {error_msg}")
         return {"mesage": error_msg}, 404
-
-
