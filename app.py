@@ -61,28 +61,27 @@ def add_progressao(form: ProgressaoSchema):
         error_msg = "Não foi possível salvar novo item :/"
         logger.warning(f"Erro ao adicionar progressão '{progressao.texto}', {error_msg}")
         return {"mesage": error_msg}, 400
-@app.get('/produtos', tags=[produto_tag],
-         responses={"200": ListagemProdutosSchema, "404": ErrorSchema})
-def get_produtos():
-    """Faz a busca por todos os Produto cadastrados
 
-    Retorna uma representação da listagem de produtos.
+@app.get('/progressoes', tags=[progressao_tag],
+         responses={"200": ListagemProgressoesSchema, "404": ErrorSchema})
+def get_progressoes():
     """
-    logger.debug(f"Coletando produtos ")
+        Retorna a lista com todas as progressões cadastradas no BD.
+    """
+    logger.debug(f"Coletando progressões ")
     # criando conexão com a base
     session = Session()
     # fazendo a busca
-    produtos = session.query(Produto).all()
+    progressoes = session.query(Progressao).all()
 
-    if not produtos:
+    if not progressoes:
         # se não há produtos cadastrados
-        return {"produtos": []}, 200
+        return {"progressoes": []}, 200
     else:
-        logger.debug(f"%d rodutos econtrados" % len(produtos))
+        logger.debug(f"%d Progressões encontradas" % len(progressoes))
         # retorna a representação de produto
-        print(produtos)
-        return apresenta_produtos(produtos), 200
-
+        print(progressoes)
+        return apresenta_progressoes(progressoes), 200
 
 @app.get('/produto', tags=[produto_tag],
          responses={"200": ProdutoViewSchema, "404": ErrorSchema})
