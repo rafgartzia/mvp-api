@@ -3,7 +3,6 @@ from typing import Optional, List
 from model.progressao import Progressao
 
 
-
 class ProgressaoSchema(BaseModel):
     """ Define como uma nova progressao a ser inserida deve ser representado
     """
@@ -23,7 +22,7 @@ class ProgressaoBuscaSchema(BaseModel):
 class ListagemProgressoesSchema(BaseModel):
     """ Define como uma listagem de produtos será retornada.
     """
-    progressoes:List[ProgressaoSchema]
+    progressoes: List[ProgressaoSchema]
 
 
 def apresenta_progressoes(progressoes: List[ProgressaoSchema]):
@@ -52,15 +51,14 @@ class ProgressaoViewSchema(BaseModel):
     etapa: str = "Pista"
 
 
-
 class ProgressaoDelSchema(BaseModel):
     """ Define como deve ser a estrutura do dado retornado após uma requisição
         de remoção.
     """
-    id: int
+    cod_mapa: int
     message: str
-    cod_mapa: str
     texto: str
+
 
 def apresenta_progressao(progressao: Progressao):
     """ Retorna uma representação da progressão seguindo o schema definido em

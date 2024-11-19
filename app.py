@@ -122,23 +122,23 @@ def del_progressao(query: ProgressaoBuscaSchema):
 
     Retorna uma mensagem de confirmação da remoção.
     """
-    progressao_id = unquote(unquote(query.id))
-    print(progressao_id)
-    logger.debug(f"Deletando dados sobre progressao #{progressao_id}")
+    progressao_cod_mapa = query.cod_mapa
+    print(progressao_cod_mapa)
+    logger.debug(f"Deletando dados sobre progressao #{progressao_cod_mapa}")
     # criando conexão com a base
     session = Session()
     # fazendo a remoção
     count = session.query(Progressao).filter(
-        Progressao.id == progressao_id).delete()
+        Progressao.cod_mapa == progressao_cod_mapa).delete()
     session.commit()
 
     if count:
         # retorna a representação da mensagem de confirmação
-        logger.debug(f"Deletado progressão #{progressao_id}")
-        return {"message": "Progressão removida", "id": progressao_id}
+        logger.debug(f"Deletado progressão #{progressao_cod_mapa}")
+        return {"message": "Progressão removida", "id": progressao_cod_mapa}
     else:
         # se o produto não foi encontrado
         error_msg = "Progressão não encontrada na base :/"
         logger.warning(f"Erro ao deletar progressão #'{
-                       progressao_id}', {error_msg}")
+                       progressao_cod_mapa}', {error_msg}")
         return {"mesage": error_msg}, 404
