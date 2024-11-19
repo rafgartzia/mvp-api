@@ -88,26 +88,26 @@ def get_progressoes():
         return apresenta_progressoes(progressoes), 200
 
 
-@app.get('/produto', tags=[progressao_tag],
+@app.get('/progressao', tags=[progressao_tag],
          responses={"200": ProgressaoViewSchema, "404": ErrorSchema})
-def get_produto(query: ProgressaoBuscaSchema):
+def get_progressao(query: ProgressaoBuscaSchema):
     """Faz a busca por uma progressão.
 
     Retorna uma representação dos produtos e comentários associados.
     """
-    progressao_id = query.id
+    progressao_cod_mapa = query.cod_mapa
     logger.debug(f"Coletando dados sobre a progressão #{progressao_id}")
     # criando conexão com a base
     session = Session()
     # fazendo a busca
     progressao = session.query(Progressao).filter(
-        Progressao.id == progressao_id).first()
+        Progressao.cod_mapa == progressao_cod_mapa).first()
 
     if not progressao:
         # se a progressão não foi encontrada
         error_msg = "Progressao não encontrado na base :/"
         logger.warning(f"Erro ao buscar progressão '{
-                       progressao_id}', {error_msg}")
+                       progressao_cod_mapa}', {error_msg}")
         return {"mesage": error_msg}, 404
     else:
         logger.debug(f"Progressão encontrada: '{progressao.nome}'")
@@ -115,30 +115,30 @@ def get_produto(query: ProgressaoBuscaSchema):
         return apresenta_progressao(progressao), 200
 
 
-@app.delete('/produto', tags=[produto_tag],
-            responses={"200": ProdutoDelSchema, "404": ErrorSchema})
-def del_produto(query: ProdutoBuscaSchema):
-    """Deleta um Produto a partir do nome de produto informado
+@app.delete('/progressao', tags=[progressao_tag],
+            responses={"200": ProgressaoDelSchema, "404": ErrorSchema})
+def del_progressao(query: ProgressaoBuscaSchema):
+    """Deleta uma Progressao a partir da id da progressão informada
 
     Retorna uma mensagem de confirmação da remoção.
     """
-    produto_nome = unquote(unquote(query.nome))
-    print(produto_nome)
-    logger.debug(f"Deletando dados sobre produto #{produto_nome}")
+    progressao_id = unquote(unquote(query.id))
+    print(progressao_id)
+    logger.debug(f"Deletando dados sobre progressao #{progressao_id}")
     # criando conexão com a base
     session = Session()
     # fazendo a remoção
-    count = session.query(Produto).filter(
-        Produto.nome == produto_nome).delete()
+    count = session.query(Progressao).filter(
+        Progressao.id == progressao_id).delete()
     session.commit()
 
     if count:
         # retorna a representação da mensagem de confirmação
-        logger.debug(f"Deletado produto #{produto_nome}")
-        return {"mesage": "Produto removido", "id": produto_nome}
+        logger.debug(f"Deletado progressão #{progressao_id}")
+        return {"message": "Progressão removida", "id": progressao_id}
     else:
         # se o produto não foi encontrado
-        error_msg = "Produto não encontrado na base :/"
-        logger.warning(f"Erro ao deletar produto #'{
-                       produto_nome}', {error_msg}")
+        error_msg = "Progressão não encontrada na base :/"
+        logger.warning(f"Erro ao deletar progressão #'{
+                       progressao_id}', {error_msg}")
         return {"mesage": error_msg}, 404

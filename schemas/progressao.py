@@ -57,7 +57,8 @@ class ProgressaoDelSchema(BaseModel):
     """ Define como deve ser a estrutura do dado retornado após uma requisição
         de remoção.
     """
-    mesage: str
+    id: int
+    message: str
     cod_mapa: str
     texto: str
 
