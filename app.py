@@ -56,14 +56,14 @@ def add_progressao(form: ProgressaoSchema):
         error_msg = "Progressão já existente na base :/"
         logger.warning(f"Erro ao adicionar progressão '{
                        progressao.texto}', {error_msg}")
-        return {"mesage": error_msg}, 409
+        return {"message": error_msg}, 409
 
     except Exception as e:
         # caso um erro fora do previsto
         error_msg = "Não foi possível salvar novo item :/"
         logger.warning(f"Erro ao adicionar progressão '{
                        progressao.texto}', {error_msg}")
-        return {"mesage": error_msg}, 400
+        return {"message": error_msg}, 400
 
 
 @app.get('/progressoes', tags=[progressao_tag],
@@ -96,7 +96,7 @@ def get_progressao(query: ProgressaoBuscaSchema):
     Retorna uma representação dos produtos e comentários associados.
     """
     progressao_cod_mapa = query.cod_mapa
-    logger.debug(f"Coletando dados sobre a progressão #{progressao_id}")
+    logger.debug(f"Coletando dados sobre a progressão #{progressao_cod_mapa}")
     # criando conexão com a base
     session = Session()
     # fazendo a busca
@@ -108,9 +108,9 @@ def get_progressao(query: ProgressaoBuscaSchema):
         error_msg = "Progressao não encontrado na base :/"
         logger.warning(f"Erro ao buscar progressão '{
                        progressao_cod_mapa}', {error_msg}")
-        return {"mesage": error_msg}, 404
+        return {"message": error_msg}, 404
     else:
-        logger.debug(f"Progressão encontrada: '{progressao.nome}'")
+        logger.debug(f"Progressão encontrada: '{progressao_cod_mapa}'")
         # retorna a representação da progressão
         return apresenta_progressao(progressao), 200
 
