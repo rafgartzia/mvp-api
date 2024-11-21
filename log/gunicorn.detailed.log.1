@@ -1,4 +1,14 @@
-[2024-11-18 22:43:59,001] ERROR log_exception() L875  Exception on /progressao [GET] - call_trace=C:\Users\rafga\git\mvp-api\env\Lib\site-packages\flask\app.py L875 
+[2024-11-19 22:17:25,840] INFO _log() L97   127.0.0.1 - - [19/Nov/2024 22:17:25] "GET /progressoes HTTP/1.1" 200 - - call_trace=C:\Users\rafga\git\mvp-api\env\Lib\site-packages\werkzeug\_internal.py L97  
+[2024-11-19 22:17:37,375] WARNING add_progressao() L57   Erro ao adicionar progressão 'Texto da progressão3', Progressão já existente na base :/ - call_trace=C:\Users\rafga\git\mvp-api\app.py L57  
+[2024-11-19 22:17:37,381] INFO _log() L97   127.0.0.1 - - [19/Nov/2024 22:17:37] "[31m[1mPOST /progressao HTTP/1.1[0m" 409 - - call_trace=C:\Users\rafga\git\mvp-api\env\Lib\site-packages\werkzeug\_internal.py L97  
+[2024-11-19 22:17:43,644] INFO _log() L97   127.0.0.1 - - [19/Nov/2024 22:17:43] "GET /progressoes HTTP/1.1" 200 - - call_trace=C:\Users\rafga\git\mvp-api\env\Lib\site-packages\werkzeug\_internal.py L97  
+[2024-11-19 22:17:48,016] INFO _log() L97   127.0.0.1 - - [19/Nov/2024 22:17:48] "GET /progressoes HTTP/1.1" 200 - - call_trace=C:\Users\rafga\git\mvp-api\env\Lib\site-packages\werkzeug\_internal.py L97  
+[2024-11-19 22:17:51,060] INFO _log() L97   127.0.0.1 - - [19/Nov/2024 22:17:51] "GET /progressoes HTTP/1.1" 200 - - call_trace=C:\Users\rafga\git\mvp-api\env\Lib\site-packages\werkzeug\_internal.py L97  
+[2024-11-19 22:17:58,476] WARNING add_progressao() L57   Erro ao adicionar progressão 'Texto da progressão3', Progressão já existente na base :/ - call_trace=C:\Users\rafga\git\mvp-api\app.py L57  
+[2024-11-19 22:17:58,478] INFO _log() L97   127.0.0.1 - - [19/Nov/2024 22:17:58] "[31m[1mPOST /progressao HTTP/1.1[0m" 409 - - call_trace=C:\Users\rafga\git\mvp-api\env\Lib\site-packages\werkzeug\_internal.py L97  
+[2024-11-19 22:18:07,710] INFO _log() L97   127.0.0.1 - - [19/Nov/2024 22:18:07] "POST /progressao HTTP/1.1" 200 - - call_trace=C:\Users\rafga\git\mvp-api\env\Lib\site-packages\werkzeug\_internal.py L97  
+[2024-11-19 22:18:12,646] INFO _log() L97   127.0.0.1 - - [19/Nov/2024 22:18:12] "GET /progressoes HTTP/1.1" 200 - - call_trace=C:\Users\rafga\git\mvp-api\env\Lib\site-packages\werkzeug\_internal.py L97  
+[2024-11-19 22:18:29,482] ERROR log_exception() L875  Exception on /progressao [GET] - call_trace=C:\Users\rafga\git\mvp-api\env\Lib\site-packages\flask\app.py L875 
 Traceback (most recent call last):
   File "C:\Users\rafga\git\mvp-api\env\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
     response = self.full_dispatch_request()
@@ -14,75 +24,40 @@ Traceback (most recent call last):
            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
   File "C:\Users\rafga\git\mvp-api\env\Lib\site-packages\flask_openapi3\scaffold.py", line 117, in view_func
     response = func(**func_kwargs)
-  File "C:\Users\rafga\git\mvp-api\app.py", line 99, in get_progressao
-    logger.debug(f"Coletando dados sobre a progressão #{progressao_id}")
-                                                        ^^^^^^^^^^^^^
-NameError: name 'progressao_id' is not defined. Did you mean: 'progressao'?
-[2024-11-18 22:43:59,060] INFO _log() L97   127.0.0.1 - - [18/Nov/2024 22:43:59] "[35m[1mGET /progressao?cod_mapa=11 HTTP/1.1[0m" 500 - - call_trace=C:\Users\rafga\git\mvp-api\env\Lib\site-packages\werkzeug\_internal.py L97  
-[2024-11-19 22:14:26,688] INFO _log() L97   [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+  File "C:\Users\rafga\git\mvp-api\app.py", line 113, in get_progressao
+    logger.debug(f"Progressão encontrada: '{progressao.nome}'")
+                                            ^^^^^^^^^^^^^^^
+AttributeError: 'Progressao' object has no attribute 'nome'
+[2024-11-19 22:18:29,504] INFO _log() L97   127.0.0.1 - - [19/Nov/2024 22:18:29] "[35m[1mGET /progressao?cod_mapa=12 HTTP/1.1[0m" 500 - - call_trace=C:\Users\rafga\git\mvp-api\env\Lib\site-packages\werkzeug\_internal.py L97  
+[2024-11-19 22:19:56,694] INFO _log() L97   [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
  * Running on all addresses (0.0.0.0)
  * Running on http://127.0.0.1:5000
  * Running on http://192.168.1.6:5000 - call_trace=C:\Users\rafga\git\mvp-api\env\Lib\site-packages\werkzeug\_internal.py L97  
-[2024-11-19 22:14:26,690] INFO _log() L97   [33mPress CTRL+C to quit[0m - call_trace=C:\Users\rafga\git\mvp-api\env\Lib\site-packages\werkzeug\_internal.py L97  
-[2024-11-19 22:14:37,188] INFO _log() L97   127.0.0.1 - - [19/Nov/2024 22:14:37] "[32mGET / HTTP/1.1[0m" 302 - - call_trace=C:\Users\rafga\git\mvp-api\env\Lib\site-packages\werkzeug\_internal.py L97  
-[2024-11-19 22:14:37,239] INFO _log() L97   127.0.0.1 - - [19/Nov/2024 22:14:37] "GET /openapi/ HTTP/1.1" 200 - - call_trace=C:\Users\rafga\git\mvp-api\env\Lib\site-packages\werkzeug\_internal.py L97  
-[2024-11-19 22:14:37,621] INFO _log() L97   127.0.0.1 - - [19/Nov/2024 22:14:37] "[36mGET /openapi/rapidoc/images/rapidoc.svg HTTP/1.1[0m" 304 - - call_trace=C:\Users\rafga\git\mvp-api\env\Lib\site-packages\werkzeug\_internal.py L97  
-[2024-11-19 22:14:37,660] INFO _log() L97   127.0.0.1 - - [19/Nov/2024 22:14:37] "[36mGET /openapi/swagger/images/swagger.svg HTTP/1.1[0m" 304 - - call_trace=C:\Users\rafga\git\mvp-api\env\Lib\site-packages\werkzeug\_internal.py L97  
-[2024-11-19 22:14:37,667] INFO _log() L97   127.0.0.1 - - [19/Nov/2024 22:14:37] "[36mGET /openapi/redoc/images/redoc.svg HTTP/1.1[0m" 304 - - call_trace=C:\Users\rafga\git\mvp-api\env\Lib\site-packages\werkzeug\_internal.py L97  
-[2024-11-19 22:14:38,787] INFO _log() L97   127.0.0.1 - - [19/Nov/2024 22:14:38] "GET /openapi/swagger HTTP/1.1" 200 - - call_trace=C:\Users\rafga\git\mvp-api\env\Lib\site-packages\werkzeug\_internal.py L97  
-[2024-11-19 22:14:38,963] INFO _log() L97   127.0.0.1 - - [19/Nov/2024 22:14:38] "[36mGET /openapi/swagger/css/swagger-ui.css HTTP/1.1[0m" 304 - - call_trace=C:\Users\rafga\git\mvp-api\env\Lib\site-packages\werkzeug\_internal.py L97  
-[2024-11-19 22:14:41,294] INFO _log() L97   127.0.0.1 - - [19/Nov/2024 22:14:41] "[36mGET /openapi/swagger/js/swagger-ui-standalone-preset.js HTTP/1.1[0m" 304 - - call_trace=C:\Users\rafga\git\mvp-api\env\Lib\site-packages\werkzeug\_internal.py L97  
-[2024-11-19 22:14:45,053] INFO _log() L97   127.0.0.1 - - [19/Nov/2024 22:14:45] "[36mGET /openapi/swagger/js/swagger-ui-bundle.js HTTP/1.1[0m" 304 - - call_trace=C:\Users\rafga\git\mvp-api\env\Lib\site-packages\werkzeug\_internal.py L97  
-[2024-11-19 22:14:45,449] INFO _log() L97   127.0.0.1 - - [19/Nov/2024 22:14:45] "GET /openapi/openapi.json HTTP/1.1" 200 - - call_trace=C:\Users\rafga\git\mvp-api\env\Lib\site-packages\werkzeug\_internal.py L97  
-[2024-11-19 22:14:55,331] WARNING add_progressao() L57   Erro ao adicionar progressão 'Texto da progressão', Progressão já existente na base :/ - call_trace=C:\Users\rafga\git\mvp-api\app.py L57  
-[2024-11-19 22:14:55,333] INFO _log() L97   127.0.0.1 - - [19/Nov/2024 22:14:55] "[31m[1mPOST /progressao HTTP/1.1[0m" 409 - - call_trace=C:\Users\rafga\git\mvp-api\env\Lib\site-packages\werkzeug\_internal.py L97  
-[2024-11-19 22:15:04,057] WARNING add_progressao() L57   Erro ao adicionar progressão 'Texto da progressão2', Progressão já existente na base :/ - call_trace=C:\Users\rafga\git\mvp-api\app.py L57  
-[2024-11-19 22:15:04,059] INFO _log() L97   127.0.0.1 - - [19/Nov/2024 22:15:04] "[31m[1mPOST /progressao HTTP/1.1[0m" 409 - - call_trace=C:\Users\rafga\git\mvp-api\env\Lib\site-packages\werkzeug\_internal.py L97  
-[2024-11-19 22:15:13,858] INFO _log() L97   127.0.0.1 - - [19/Nov/2024 22:15:13] "GET /progressoes HTTP/1.1" 200 - - call_trace=C:\Users\rafga\git\mvp-api\env\Lib\site-packages\werkzeug\_internal.py L97  
-[2024-11-19 22:15:28,138] ERROR log_exception() L875  Exception on /progressao [GET] - call_trace=C:\Users\rafga\git\mvp-api\env\Lib\site-packages\flask\app.py L875 
-Traceback (most recent call last):
-  File "C:\Users\rafga\git\mvp-api\env\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
-    response = self.full_dispatch_request()
-  File "C:\Users\rafga\git\mvp-api\env\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "C:\Users\rafga\git\mvp-api\env\Lib\site-packages\flask_cors\extension.py", line 194, in wrapped_function
-    return cors_after_request(app.make_response(f(*args, **kwargs)))
-                                                ~^^^^^^^^^^^^^^^^^
-  File "C:\Users\rafga\git\mvp-api\env\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "C:\Users\rafga\git\mvp-api\env\Lib\site-packages\flask\app.py", line 902, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
-           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
-  File "C:\Users\rafga\git\mvp-api\env\Lib\site-packages\flask_openapi3\scaffold.py", line 117, in view_func
-    response = func(**func_kwargs)
-  File "C:\Users\rafga\git\mvp-api\app.py", line 99, in get_progressao
-    logger.debug(f"Coletando dados sobre a progressão #{progressao_id}")
-                                                        ^^^^^^^^^^^^^
-NameError: name 'progressao_id' is not defined. Did you mean: 'progressao'?
-[2024-11-19 22:15:28,229] INFO _log() L97   127.0.0.1 - - [19/Nov/2024 22:15:28] "[35m[1mGET /progressao?cod_mapa=12 HTTP/1.1[0m" 500 - - call_trace=C:\Users\rafga\git\mvp-api\env\Lib\site-packages\werkzeug\_internal.py L97  
-[2024-11-19 22:15:38,802] ERROR log_exception() L875  Exception on /progressao [GET] - call_trace=C:\Users\rafga\git\mvp-api\env\Lib\site-packages\flask\app.py L875 
-Traceback (most recent call last):
-  File "C:\Users\rafga\git\mvp-api\env\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
-    response = self.full_dispatch_request()
-  File "C:\Users\rafga\git\mvp-api\env\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "C:\Users\rafga\git\mvp-api\env\Lib\site-packages\flask_cors\extension.py", line 194, in wrapped_function
-    return cors_after_request(app.make_response(f(*args, **kwargs)))
-                                                ~^^^^^^^^^^^^^^^^^
-  File "C:\Users\rafga\git\mvp-api\env\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "C:\Users\rafga\git\mvp-api\env\Lib\site-packages\flask\app.py", line 902, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
-           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
-  File "C:\Users\rafga\git\mvp-api\env\Lib\site-packages\flask_openapi3\scaffold.py", line 117, in view_func
-    response = func(**func_kwargs)
-  File "C:\Users\rafga\git\mvp-api\app.py", line 99, in get_progressao
-    logger.debug(f"Coletando dados sobre a progressão #{progressao_id}")
-                                                        ^^^^^^^^^^^^^
-NameError: name 'progressao_id' is not defined. Did you mean: 'progressao'?
-[2024-11-19 22:15:38,818] INFO _log() L97   127.0.0.1 - - [19/Nov/2024 22:15:38] "[35m[1mGET /progressao?cod_mapa=11 HTTP/1.1[0m" 500 - - call_trace=C:\Users\rafga\git\mvp-api\env\Lib\site-packages\werkzeug\_internal.py L97  
-[2024-11-19 22:17:03,118] INFO _log() L97   [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+[2024-11-19 22:19:56,696] INFO _log() L97   [33mPress CTRL+C to quit[0m - call_trace=C:\Users\rafga\git\mvp-api\env\Lib\site-packages\werkzeug\_internal.py L97  
+[2024-11-19 22:20:12,065] INFO _log() L97   127.0.0.1 - - [19/Nov/2024 22:20:12] "[32mGET / HTTP/1.1[0m" 302 - - call_trace=C:\Users\rafga\git\mvp-api\env\Lib\site-packages\werkzeug\_internal.py L97  
+[2024-11-19 22:20:12,160] INFO _log() L97   127.0.0.1 - - [19/Nov/2024 22:20:12] "GET /openapi/ HTTP/1.1" 200 - - call_trace=C:\Users\rafga\git\mvp-api\env\Lib\site-packages\werkzeug\_internal.py L97  
+[2024-11-19 22:20:12,385] INFO _log() L97   127.0.0.1 - - [19/Nov/2024 22:20:12] "[36mGET /openapi/redoc/images/redoc.svg HTTP/1.1[0m" 304 - - call_trace=C:\Users\rafga\git\mvp-api\env\Lib\site-packages\werkzeug\_internal.py L97  
+[2024-11-19 22:20:12,420] INFO _log() L97   127.0.0.1 - - [19/Nov/2024 22:20:12] "[36mGET /openapi/rapidoc/images/rapidoc.svg HTTP/1.1[0m" 304 - - call_trace=C:\Users\rafga\git\mvp-api\env\Lib\site-packages\werkzeug\_internal.py L97  
+[2024-11-19 22:20:12,469] INFO _log() L97   127.0.0.1 - - [19/Nov/2024 22:20:12] "[36mGET /openapi/swagger/images/swagger.svg HTTP/1.1[0m" 304 - - call_trace=C:\Users\rafga\git\mvp-api\env\Lib\site-packages\werkzeug\_internal.py L97  
+[2024-11-19 22:20:14,478] INFO _log() L97   127.0.0.1 - - [19/Nov/2024 22:20:14] "GET /openapi/swagger HTTP/1.1" 200 - - call_trace=C:\Users\rafga\git\mvp-api\env\Lib\site-packages\werkzeug\_internal.py L97  
+[2024-11-19 22:20:14,528] INFO _log() L97   127.0.0.1 - - [19/Nov/2024 22:20:14] "[36mGET /openapi/swagger/js/swagger-ui-bundle.js HTTP/1.1[0m" 304 - - call_trace=C:\Users\rafga\git\mvp-api\env\Lib\site-packages\werkzeug\_internal.py L97  
+[2024-11-19 22:20:14,532] INFO _log() L97   127.0.0.1 - - [19/Nov/2024 22:20:14] "[36mGET /openapi/swagger/css/swagger-ui.css HTTP/1.1[0m" 304 - - call_trace=C:\Users\rafga\git\mvp-api\env\Lib\site-packages\werkzeug\_internal.py L97  
+[2024-11-19 22:20:14,535] INFO _log() L97   127.0.0.1 - - [19/Nov/2024 22:20:14] "[36mGET /openapi/swagger/js/swagger-ui-standalone-preset.js HTTP/1.1[0m" 304 - - call_trace=C:\Users\rafga\git\mvp-api\env\Lib\site-packages\werkzeug\_internal.py L97  
+[2024-11-19 22:20:14,983] INFO _log() L97   127.0.0.1 - - [19/Nov/2024 22:20:14] "GET /openapi/openapi.json HTTP/1.1" 200 - - call_trace=C:\Users\rafga\git\mvp-api\env\Lib\site-packages\werkzeug\_internal.py L97  
+[2024-11-19 22:20:27,008] INFO _log() L97   127.0.0.1 - - [19/Nov/2024 22:20:27] "GET /progressoes HTTP/1.1" 200 - - call_trace=C:\Users\rafga\git\mvp-api\env\Lib\site-packages\werkzeug\_internal.py L97  
+[2024-11-19 22:20:41,086] INFO _log() L97   127.0.0.1 - - [19/Nov/2024 22:20:41] "GET /progressao?cod_mapa=12 HTTP/1.1" 200 - - call_trace=C:\Users\rafga\git\mvp-api\env\Lib\site-packages\werkzeug\_internal.py L97  
+[2024-11-19 22:20:49,215] WARNING get_progressao() L109  Erro ao buscar progressão '15', Progressao não encontrado na base :/ - call_trace=C:\Users\rafga\git\mvp-api\app.py L109 
+[2024-11-19 22:20:49,219] INFO _log() L97   127.0.0.1 - - [19/Nov/2024 22:20:49] "[33mGET /progressao?cod_mapa=15 HTTP/1.1[0m" 404 - - call_trace=C:\Users\rafga\git\mvp-api\env\Lib\site-packages\werkzeug\_internal.py L97  
+[2024-11-19 22:20:56,398] INFO _log() L97   127.0.0.1 - - [19/Nov/2024 22:20:56] "GET /progressao?cod_mapa=11 HTTP/1.1" 200 - - call_trace=C:\Users\rafga\git\mvp-api\env\Lib\site-packages\werkzeug\_internal.py L97  
+[2024-11-19 22:21:09,211] INFO _log() L97   127.0.0.1 - - [19/Nov/2024 22:21:09] "DELETE /progressao?cod_mapa=14 HTTP/1.1" 200 - - call_trace=C:\Users\rafga\git\mvp-api\env\Lib\site-packages\werkzeug\_internal.py L97  
+[2024-11-19 22:21:16,677] WARNING del_progressao() L142  Erro ao deletar progressão #'9', Progressão não encontrada na base :/ - call_trace=C:\Users\rafga\git\mvp-api\app.py L142 
+[2024-11-19 22:21:16,693] INFO _log() L97   127.0.0.1 - - [19/Nov/2024 22:21:16] "[33mDELETE /progressao?cod_mapa=09 HTTP/1.1[0m" 404 - - call_trace=C:\Users\rafga\git\mvp-api\env\Lib\site-packages\werkzeug\_internal.py L97  
+[2024-11-20 21:21:07,078] INFO _log() L97   [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
  * Running on all addresses (0.0.0.0)
  * Running on http://127.0.0.1:5000
  * Running on http://192.168.1.6:5000 - call_trace=C:\Users\rafga\git\mvp-api\env\Lib\site-packages\werkzeug\_internal.py L97  
-[2024-11-19 22:17:03,122] INFO _log() L97   [33mPress CTRL+C to quit[0m - call_trace=C:\Users\rafga\git\mvp-api\env\Lib\site-packages\werkzeug\_internal.py L97  
+[2024-11-20 21:21:07,081] INFO _log() L97   [33mPress CTRL+C to quit[0m - call_trace=C:\Users\rafga\git\mvp-api\env\Lib\site-packages\werkzeug\_internal.py L97  
+[2024-11-20 21:21:11,034] INFO _log() L97   127.0.0.1 - - [20/Nov/2024 21:21:11] "[32mGET / HTTP/1.1[0m" 302 - - call_trace=C:\Users\rafga\git\mvp-api\env\Lib\site-packages\werkzeug\_internal.py L97  
+[2024-11-20 21:21:11,054] INFO _log() L97   127.0.0.1 - - [20/Nov/2024 21:21:11] "GET /openapi/ HTTP/1.1" 200 - - call_trace=C:\Users\rafga\git\mvp-api\env\Lib\site-packages\werkzeug\_internal.py L97  
+[2024-11-20 21:21:11,336] INFO _log() L97   127.0.0.1 - - [20/Nov/2024 21:21:11] "[36mGET /openapi/redoc/images/redoc.svg HTTP/1.1[0m" 304 - - call_trace=C:\Users\rafga\git\mvp-api\env\Lib\site-packages\werkzeug\_internal.py L97  
+[2024-11-20 21:21:11,361] INFO _log() L97   127.0.0.1 - - [20/Nov/2024 21:21:11] "[36mGET /openapi/rapidoc/images/rapidoc.svg HTTP/1.1[0m" 304 - - call_trace=C:\Users\rafga\git\mvp-api\env\Lib\site-packages\werkzeug\_internal.py L97  

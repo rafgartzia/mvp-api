@@ -9,20 +9,21 @@ from logger import logger
 from schemas import *
 from flask_cors import CORS
 
-info = Info(title="API progressoes", version="1.0.0")
+info = Info(title="API Progressões", version="1.0.0")
 app = OpenAPI(__name__, info=info)
 CORS(app)
 
 # definindo tags
 home_tag = Tag(name="Documentação",
                description="Seleção de documentação: Swagger, Redoc ou RapiDoc")
-progressao_tag = Tag(
-    name="Progressão", description="Adição, visualização e remoção de progressão à base")
+progressao_tag = Tag(name="Progressão",
+                     description="Adição, visualização e remoção de progressões à base")
 
 
 @app.get('/', tags=[home_tag])
 def home():
-    """Redireciona para /openapi, tela que permite a escolha do estilo de documentação.
+    """Redireciona para /openapi, tela que permite a escolha do estilo 
+    de documentação.
     """
     return redirect('/openapi')
 
@@ -40,7 +41,8 @@ def add_progressao(form: ProgressaoSchema):
         ramo=form.ramo,
         etapa=form.etapa
     )
-    logger.debug(f"Adicionando progressão: '{progressao.texto}'")
+    logger.debug(f"Adicionando progressão: '{
+                 progressao.cod_mapa}' - '{progressao.texto}'")
     try:
         # criando conexão com a base
         session = Session()
@@ -48,20 +50,21 @@ def add_progressao(form: ProgressaoSchema):
         session.add(progressao)
         # efetivando o camando de adição de novo item na tabela
         session.commit()
-        logger.debug(f"Adicionada progressão: '{progressao.texto}'")
+        logger.debug(f"Adicionada progressão: '{
+                     progressao.cod_mapa}' - '{progressao.texto}'")
         return apresenta_progressao(progressao), 200
 
     except IntegrityError as e:
         # como a duplicidade do nome é a provável razão do IntegrityError
         error_msg = "Progressão já existente na base :/"
-        logger.warning(f"Erro ao adicionar progressão '{
+        logger.warning(f"Erro ao adicionar progressão '{progressao.cod_mapa}' - '{
                        progressao.texto}', {error_msg}")
         return {"message": error_msg}, 409
 
     except Exception as e:
         # caso um erro fora do previsto
         error_msg = "Não foi possível salvar novo item :/"
-        logger.warning(f"Erro ao adicionar progressão '{
+        logger.warning(f"Erro ao adicionar progressão '{progressao.cod_mapa}' - '{
                        progressao.texto}', {error_msg}")
         return {"message": error_msg}, 400
 
@@ -118,7 +121,7 @@ def get_progressao(query: ProgressaoBuscaSchema):
 @app.delete('/progressao', tags=[progressao_tag],
             responses={"200": ProgressaoDelSchema, "404": ErrorSchema})
 def del_progressao(query: ProgressaoBuscaSchema):
-    """Deleta uma Progressao a partir da id da progressão informada
+    """Deleta uma Progressao a partir do cod_mapa da progressão informada
 
     Retorna uma mensagem de confirmação da remoção.
     """
