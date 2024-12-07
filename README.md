@@ -9,6 +9,7 @@ Após clonar o repositório, é necessário ir ao diretório raiz, pelo terminal
 
 ```
 (env)$ pip install -r requirements.txt
+(env)$ pip install -U flask-openapi3[swagger]
 ```
 
 Este comando instala as dependências/bibliotecas, descritas no arquivo `requirements.txt`.
