@@ -1,4 +1,4 @@
-[2024-12-08 11:45:46,739] ERROR log_exception() L875  Exception on /progressoes [GET] - call_trace=c:\Users\rafga\git\mvp-api\.venv\Lib\site-packages\flask\app.py L875 
+[2024-12-08 11:46:17,242] ERROR log_exception() L875  Exception on /progressoes [GET] - call_trace=c:\Users\rafga\git\mvp-api\.venv\Lib\site-packages\flask\app.py L875 
 Traceback (most recent call last):
   File "c:\Users\rafga\git\mvp-api\.venv\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
     response = self.full_dispatch_request()
@@ -71,8 +71,8 @@ Traceback (most recent call last):
     ...<4 lines>...
     )
 sqlalchemy.exc.TimeoutError: QueuePool limit of size 5 overflow 10 reached, connection timed out, timeout 30.00 (Background on this error at: https://sqlalche.me/e/20/3o7r)
-[2024-12-08 11:45:46,830] INFO _log() L97   127.0.0.1 - - [08/Dec/2024 11:45:46] "[35m[1mGET /progressoes HTTP/1.1[0m" 500 - - call_trace=c:\Users\rafga\git\mvp-api\.venv\Lib\site-packages\werkzeug\_internal.py L97  
-[2024-12-08 11:46:11,201] ERROR log_exception() L875  Exception on /progressoes [GET] - call_trace=c:\Users\rafga\git\mvp-api\.venv\Lib\site-packages\flask\app.py L875 
+[2024-12-08 11:46:17,320] INFO _log() L97   127.0.0.1 - - [08/Dec/2024 11:46:17] "[35m[1mGET /progressoes HTTP/1.1[0m" 500 - - call_trace=c:\Users\rafga\git\mvp-api\.venv\Lib\site-packages\werkzeug\_internal.py L97  
+[2024-12-08 11:46:26,449] ERROR log_exception() L875  Exception on /progressoes [GET] - call_trace=c:\Users\rafga\git\mvp-api\.venv\Lib\site-packages\flask\app.py L875 
 Traceback (most recent call last):
   File "c:\Users\rafga\git\mvp-api\.venv\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
     response = self.full_dispatch_request()
@@ -145,4 +145,5 @@ Traceback (most recent call last):
     ...<4 lines>...
     )
 sqlalchemy.exc.TimeoutError: QueuePool limit of size 5 overflow 10 reached, connection timed out, timeout 30.00 (Background on this error at: https://sqlalche.me/e/20/3o7r)
-[2024-12-08 11:46:11,231] INFO _log() L97   127.0.0.1 - - [08/Dec/2024 11:46:11] "[35m[1mGET /progressoes HTTP/1.1[0m" 500 - - call_trace=c:\Users\rafga\git\mvp-api\.venv\Lib\site-packages\werkzeug\_internal.py L97  
+[2024-12-08 11:46:26,495] INFO _log() L97   127.0.0.1 - - [08/Dec/2024 11:46:26] "[35m[1mGET /progressoes HTTP/1.1[0m" 500 - - call_trace=c:\Users\rafga\git\mvp-api\.venv\Lib\site-packages\werkzeug\_internal.py L97  
+[2024-12-08 11:46:44,742] WARNING add_progressao() L67   Erro ao adicionar progressão '12' - 'teste teste', Não foi possível salvar novo item :/ - call_trace=C:\Users\rafga\git\mvp-api\app.py L67  

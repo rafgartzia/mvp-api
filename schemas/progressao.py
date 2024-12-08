@@ -6,17 +6,17 @@ from model.progressao import Progressao
 class ProgressaoSchema(BaseModel):
     """ Define como uma nova progressao a ser inserida deve ser representado
     """
-    cod_mapa: int = 10
+    cod_mapa: int = 1
     texto: str = "Texto da progressão"
     ramo: str = "Escoteiro"
-    etapa: str = "Pista"
+    etapa: str = "Pista/Trilha"
 
 
 class ProgressaoBuscaSchema(BaseModel):
     """ Define como deve ser a estrutura que representa a busca. Que será
         feita apenas com base no codigo do mapa da progressão.
     """
-    cod_mapa: int = 10
+    cod_mapa: int = 1
 
 
 class ListagemProgressoesSchema(BaseModel):
@@ -45,10 +45,10 @@ class ProgressaoViewSchema(BaseModel):
     """ Define como uma progressão será retornado.
     """
     id: int = 1
-    cod_mapa: int = 10
+    cod_mapa: int = 1
     texto: str = "Texto da progressão"
     ramo: str = "Escoteiro"
-    etapa: str = "Pista"
+    etapa: str = "Pista/Trilha"
 
 
 class ProgressaoDelSchema(BaseModel):
