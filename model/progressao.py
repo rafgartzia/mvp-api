@@ -12,7 +12,7 @@ class Progressao(Base):
     id = Column("pk_progressao", Integer, primary_key=True)
     # cod_mapa se repetem entre os ramos (Lobinho, Escoteiro e Senior) por isso não está como unique
     cod_mapa = Column(Integer)
-    texto = Column(String(300), unique=True, nullable=False)
+    texto = Column(String(350), unique=True, nullable=False)
     ramo = Column(String(20), nullable=False)
     etapa = Column(String(20), nullable=False)
     data_insercao = Column(DateTime, default=datetime.now())

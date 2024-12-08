@@ -121,7 +121,7 @@ def get_progressao(query: ProgressaoBuscaSchema):
 @app.delete('/progressao', tags=[progressao_tag],
             responses={"200": ProgressaoDelSchema, "404": ErrorSchema})
 def del_progressao(query: ProgressaoBuscaSchema):
-    """Deleta uma Progressao a partir do cod_mapa da progressão informada
+    """Deleta uma Progressao a partir do descrição da progressão informada.
 
     Retorna uma mensagem de confirmação da remoção.
     """
