@@ -3,28 +3,28 @@ from sqlalchemy.orm import relationship
 from datetime import datetime
 from typing import Union
 
-from  model import Base
+from model import Base
 
 
 class Progressao(Base):
     __tablename__ = 'progressao'
 
-
     id = Column("pk_progressao", Integer, primary_key=True)
+    # cod_mapa se repetem entre os ramos (Lobinho, Escoteiro e Senior) por isso não está como unique
     cod_mapa = Column(Integer)
-    texto = Column(String(300), unique=True)
-    ramo = Column(String(20))
-    etapa = Column(String(20))
+    texto = Column(String(300), unique=True, nullable=False)
+    ramo = Column(String(20), nullable=False)
+    etapa = Column(String(20), nullable=False)
     data_insercao = Column(DateTime, default=datetime.now())
 
     # Definição do relacionamento entre o produto e o comentário.
     # Essa relação é implicita, não está salva na tabela 'produto',
     # mas aqui estou deixando para SQLAlchemy a responsabilidade
     # de reconstruir esse relacionamento.
-    #comentarios = relationship("Comentario")
+    # comentarios = relationship("Comentario")
 
-    def __init__(self, cod_mapa:int, texto:str, ramo:str, 
-                 etapa:str, data_insercao:Union[DateTime, None] = None):
+    def __init__(self, cod_mapa: int, texto: str, ramo: str,
+                 etapa: str, data_insercao: Union[DateTime, None] = None):
         """
         Cria uma Progressão
 
@@ -48,4 +48,3 @@ class Progressao(Base):
     #    """ Adiciona um novo comentário ao Produto
      #   """
       #  self.comentarios.append(comentario)
-
