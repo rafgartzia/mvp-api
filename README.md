@@ -1,6 +1,7 @@
-#Pós Eng. Soft. PUC-Rio
-##MVP Dev. Full Stack Básico
+# Pós Eng. Soft. PUC-Rio
+## MVP Dev. Full Stack Básico
 
+### Intro
 Nessa proposta de MVP pretendemos criar uma solução para acompanhamento das progressões dos jovens no Movimento Escoteiro.
 
 As progressões são atividade/tarefas que devem ser realizadas pelos jovens a fim de desenvolverem as seguintes competências: física, intelectual, social, espiritual, caráter e afetiva.
@@ -8,6 +9,20 @@ As progressões são atividade/tarefas que devem ser realizadas pelos jovens a f
 Embora exita um aplicativo para Android que permite o acompanhamento das progressões de cada jovem, não há funconalidade para a apresentação gráfica e consolidade das progressões de um grupo de jovens.
 
 Essa apresentação facilitaria o diagnóstico de competências do jovens e auxiliaria na proposiçao de atividades para os jovens.
+
+Nesse MVP apresentamos a implentação da parte realtiva às Progressões.
+
+### Modelo do Banco de Dados
+
+Os modelos estão disponíveis nos seguintes links:
+
+[Conceitual](https://app.brmodeloweb.com/#!/publicview/6756350fec67b41b61bd77e6)
+
+[Lógico](https://app.brmodeloweb.com/#!/publicview/67563463ec67b41b61bd77c7)
+
+Nesse MVP inciamos com a tabela Progressao.
+
+### Execução da API
 
 É recomendado o uso de ambiente virtual. O comando abaixo cria o ambiente de nome ".env".
 
