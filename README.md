@@ -1,15 +1,27 @@
-# mvp-api
-Repositório com o projeto da API do MPV - disciplina Dev. Full Stack Básico - Eng. Software PUC RIO
+#Pós Eng. Soft. PUC-Rio
+##MVP Dev. Full Stack Básico
 
+Nessa proposta de MVP pretendemos criar uma solução para acompanhamento das progressões dos jovens no Movimento Escoteiro.
 
-Será necessário ter todas as libs python listadas no `requirements.txt` instaladas.
-Após clonar o repositório, é necessário ir ao diretório raiz, pelo terminal, para poder executar os comandos descritos abaixo.
+As progressões são atividade/tarefas que devem ser realizadas pelos jovens a fim de desenvolverem as seguintes competências: física, intelectual, social, espiritual, caráter e afetiva.
 
-> É fortemente indicado o uso de ambientes virtuais do tipo [virtualenv](https://virtualenv.pypa.io/en/latest/installation.html).
+Embora exita um aplicativo para Android que permite o acompanhamento das progressões de cada jovem, não há funconalidade para a apresentação gráfica e consolidade das progressões de um grupo de jovens.
+
+Essa apresentação facilitaria o diagnóstico de competências do jovens e auxiliaria na proposiçao de atividades para os jovens.
+
+É recomendado o uso de ambiente virtual. O comando abaixo cria o ambiente de nome ".env".
 
 ```
-(env)$ pip install -r requirements.txt
-(env)$ pip install -U flask-openapi3[swagger]
+pasta_raiz\python -m venv .env
+```
+Ativar o ab=mbiente virtual.
+
+Para execução da API será necessária a instalação das bibliotecas listadas no `requirements.txt`.
+
+Após clonar o repositório, é necessário ir ao diretório raiz, pelo terminal, para poder executar os comandos descritos abaixo.
+
+```
+pasta_raiz\pip install -r requirements.txt
 ```
 
 Este comando instala as dependências/bibliotecas, descritas no arquivo `requirements.txt`.
@@ -18,13 +30,6 @@ Para executar a API  basta executar:
 
 ```
 (env)$ flask run --host 0.0.0.0 --port 5000
-```
-
-Em modo de desenvolvimento é recomendado executar utilizando o parâmetro reload, que reiniciará o servidor
-automaticamente após uma mudança no código fonte. 
-
-```
-(env)$ flask run --host 0.0.0.0 --port 5000 --reload
 ```
 
 Abra o [http://localhost:5000/#/](http://localhost:5000/#/) no navegador para verificar o status da API em execução.

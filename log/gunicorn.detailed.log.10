@@ -1,149 +1,47 @@
-[2024-12-08 11:46:17,242] ERROR log_exception() L875  Exception on /progressoes [GET] - call_trace=c:\Users\rafga\git\mvp-api\.venv\Lib\site-packages\flask\app.py L875 
-Traceback (most recent call last):
-  File "c:\Users\rafga\git\mvp-api\.venv\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
-    response = self.full_dispatch_request()
-  File "c:\Users\rafga\git\mvp-api\.venv\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "c:\Users\rafga\git\mvp-api\.venv\Lib\site-packages\flask_cors\extension.py", line 194, in wrapped_function
-    return cors_after_request(app.make_response(f(*args, **kwargs)))
-                                                ~^^^^^^^^^^^^^^^^^
-  File "c:\Users\rafga\git\mvp-api\.venv\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "c:\Users\rafga\git\mvp-api\.venv\Lib\site-packages\flask\app.py", line 902, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
-           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
-  File "c:\Users\rafga\git\mvp-api\.venv\Lib\site-packages\flask_openapi3\scaffold.py", line 117, in view_func
-    response = func(**func_kwargs)
-  File "C:\Users\rafga\git\mvp-api\app.py", line 82, in get_progressoes
-    progressoes = session.query(Progressao).all()
-  File "c:\Users\rafga\git\mvp-api\.venv\Lib\site-packages\sqlalchemy\orm\query.py", line 2673, in all
-    return self._iter().all()  # type: ignore
-           ~~~~~~~~~~^^
-  File "c:\Users\rafga\git\mvp-api\.venv\Lib\site-packages\sqlalchemy\orm\query.py", line 2827, in _iter
-    result: Union[ScalarResult[_T], Result[_T]] = self.session.execute(
-                                                  ~~~~~~~~~~~~~~~~~~~~^
-        statement,
-        ^^^^^^^^^^
-        params,
-        ^^^^^^^
-        execution_options={"_sa_orm_load_options": self.load_options},
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "c:\Users\rafga\git\mvp-api\.venv\Lib\site-packages\sqlalchemy\orm\session.py", line 2362, in execute
-    return self._execute_internal(
-           ~~~~~~~~~~~~~~~~~~~~~~^
-        statement,
-        ^^^^^^^^^^
-    ...<4 lines>...
-        _add_event=_add_event,
-        ^^^^^^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "c:\Users\rafga\git\mvp-api\.venv\Lib\site-packages\sqlalchemy\orm\session.py", line 2237, in _execute_internal
-    conn = self._connection_for_bind(bind)
-  File "c:\Users\rafga\git\mvp-api\.venv\Lib\site-packages\sqlalchemy\orm\session.py", line 2106, in _connection_for_bind
-    return trans._connection_for_bind(engine, execution_options)
-           ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "<string>", line 2, in _connection_for_bind
-  File "c:\Users\rafga\git\mvp-api\.venv\Lib\site-packages\sqlalchemy\orm\state_changes.py", line 139, in _go
-    ret_value = fn(self, *arg, **kw)
-  File "c:\Users\rafga\git\mvp-api\.venv\Lib\site-packages\sqlalchemy\orm\session.py", line 1189, in _connection_for_bind
-    conn = bind.connect()
-  File "c:\Users\rafga\git\mvp-api\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 3278, in connect
-    return self._connection_cls(self)
-           ~~~~~~~~~~~~~~~~~~~~^^^^^^
-  File "c:\Users\rafga\git\mvp-api\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 146, in __init__
-    self._dbapi_connection = engine.raw_connection()
-                             ~~~~~~~~~~~~~~~~~~~~~^^
-  File "c:\Users\rafga\git\mvp-api\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 3302, in raw_connection
-    return self.pool.connect()
-           ~~~~~~~~~~~~~~~~~^^
-  File "c:\Users\rafga\git\mvp-api\.venv\Lib\site-packages\sqlalchemy\pool\base.py", line 449, in connect
-    return _ConnectionFairy._checkout(self)
-           ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
-  File "c:\Users\rafga\git\mvp-api\.venv\Lib\site-packages\sqlalchemy\pool\base.py", line 1263, in _checkout
-    fairy = _ConnectionRecord.checkout(pool)
-  File "c:\Users\rafga\git\mvp-api\.venv\Lib\site-packages\sqlalchemy\pool\base.py", line 712, in checkout
-    rec = pool._do_get()
-  File "c:\Users\rafga\git\mvp-api\.venv\Lib\site-packages\sqlalchemy\pool\impl.py", line 168, in _do_get
-    raise exc.TimeoutError(
-    ...<4 lines>...
-    )
-sqlalchemy.exc.TimeoutError: QueuePool limit of size 5 overflow 10 reached, connection timed out, timeout 30.00 (Background on this error at: https://sqlalche.me/e/20/3o7r)
-[2024-12-08 11:46:17,320] INFO _log() L97   127.0.0.1 - - [08/Dec/2024 11:46:17] "[35m[1mGET /progressoes HTTP/1.1[0m" 500 - - call_trace=c:\Users\rafga\git\mvp-api\.venv\Lib\site-packages\werkzeug\_internal.py L97  
-[2024-12-08 11:46:26,449] ERROR log_exception() L875  Exception on /progressoes [GET] - call_trace=c:\Users\rafga\git\mvp-api\.venv\Lib\site-packages\flask\app.py L875 
-Traceback (most recent call last):
-  File "c:\Users\rafga\git\mvp-api\.venv\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
-    response = self.full_dispatch_request()
-  File "c:\Users\rafga\git\mvp-api\.venv\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "c:\Users\rafga\git\mvp-api\.venv\Lib\site-packages\flask_cors\extension.py", line 194, in wrapped_function
-    return cors_after_request(app.make_response(f(*args, **kwargs)))
-                                                ~^^^^^^^^^^^^^^^^^
-  File "c:\Users\rafga\git\mvp-api\.venv\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "c:\Users\rafga\git\mvp-api\.venv\Lib\site-packages\flask\app.py", line 902, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
-           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
-  File "c:\Users\rafga\git\mvp-api\.venv\Lib\site-packages\flask_openapi3\scaffold.py", line 117, in view_func
-    response = func(**func_kwargs)
-  File "C:\Users\rafga\git\mvp-api\app.py", line 82, in get_progressoes
-    progressoes = session.query(Progressao).all()
-  File "c:\Users\rafga\git\mvp-api\.venv\Lib\site-packages\sqlalchemy\orm\query.py", line 2673, in all
-    return self._iter().all()  # type: ignore
-           ~~~~~~~~~~^^
-  File "c:\Users\rafga\git\mvp-api\.venv\Lib\site-packages\sqlalchemy\orm\query.py", line 2827, in _iter
-    result: Union[ScalarResult[_T], Result[_T]] = self.session.execute(
-                                                  ~~~~~~~~~~~~~~~~~~~~^
-        statement,
-        ^^^^^^^^^^
-        params,
-        ^^^^^^^
-        execution_options={"_sa_orm_load_options": self.load_options},
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "c:\Users\rafga\git\mvp-api\.venv\Lib\site-packages\sqlalchemy\orm\session.py", line 2362, in execute
-    return self._execute_internal(
-           ~~~~~~~~~~~~~~~~~~~~~~^
-        statement,
-        ^^^^^^^^^^
-    ...<4 lines>...
-        _add_event=_add_event,
-        ^^^^^^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "c:\Users\rafga\git\mvp-api\.venv\Lib\site-packages\sqlalchemy\orm\session.py", line 2237, in _execute_internal
-    conn = self._connection_for_bind(bind)
-  File "c:\Users\rafga\git\mvp-api\.venv\Lib\site-packages\sqlalchemy\orm\session.py", line 2106, in _connection_for_bind
-    return trans._connection_for_bind(engine, execution_options)
-           ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "<string>", line 2, in _connection_for_bind
-  File "c:\Users\rafga\git\mvp-api\.venv\Lib\site-packages\sqlalchemy\orm\state_changes.py", line 139, in _go
-    ret_value = fn(self, *arg, **kw)
-  File "c:\Users\rafga\git\mvp-api\.venv\Lib\site-packages\sqlalchemy\orm\session.py", line 1189, in _connection_for_bind
-    conn = bind.connect()
-  File "c:\Users\rafga\git\mvp-api\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 3278, in connect
-    return self._connection_cls(self)
-           ~~~~~~~~~~~~~~~~~~~~^^^^^^
-  File "c:\Users\rafga\git\mvp-api\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 146, in __init__
-    self._dbapi_connection = engine.raw_connection()
-                             ~~~~~~~~~~~~~~~~~~~~~^^
-  File "c:\Users\rafga\git\mvp-api\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 3302, in raw_connection
-    return self.pool.connect()
-           ~~~~~~~~~~~~~~~~~^^
-  File "c:\Users\rafga\git\mvp-api\.venv\Lib\site-packages\sqlalchemy\pool\base.py", line 449, in connect
-    return _ConnectionFairy._checkout(self)
-           ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
-  File "c:\Users\rafga\git\mvp-api\.venv\Lib\site-packages\sqlalchemy\pool\base.py", line 1263, in _checkout
-    fairy = _ConnectionRecord.checkout(pool)
-  File "c:\Users\rafga\git\mvp-api\.venv\Lib\site-packages\sqlalchemy\pool\base.py", line 712, in checkout
-    rec = pool._do_get()
-  File "c:\Users\rafga\git\mvp-api\.venv\Lib\site-packages\sqlalchemy\pool\impl.py", line 168, in _do_get
-    raise exc.TimeoutError(
-    ...<4 lines>...
-    )
-sqlalchemy.exc.TimeoutError: QueuePool limit of size 5 overflow 10 reached, connection timed out, timeout 30.00 (Background on this error at: https://sqlalche.me/e/20/3o7r)
-[2024-12-08 11:46:26,495] INFO _log() L97   127.0.0.1 - - [08/Dec/2024 11:46:26] "[35m[1mGET /progressoes HTTP/1.1[0m" 500 - - call_trace=c:\Users\rafga\git\mvp-api\.venv\Lib\site-packages\werkzeug\_internal.py L97  
-[2024-12-08 11:46:44,742] WARNING add_progressao() L67   Erro ao adicionar progressão '12' - 'teste teste', Não foi possível salvar novo item :/ - call_trace=C:\Users\rafga\git\mvp-api\app.py L67  
+[2024-12-08 13:46:55,596] INFO _log() L97   127.0.0.1 - - [08/Dec/2024 13:46:55] "[33mDELETE /progressao?cod_mapa=10 HTTP/1.1[0m" 404 - - call_trace=c:\Users\rafga\git\mvp-api\.venv\Lib\site-packages\werkzeug\_internal.py L97  
+[2024-12-08 13:46:59,545] INFO _log() L97   127.0.0.1 - - [08/Dec/2024 13:46:59] "OPTIONS /progressao?cod_mapa=10 HTTP/1.1" 200 - - call_trace=c:\Users\rafga\git\mvp-api\.venv\Lib\site-packages\werkzeug\_internal.py L97  
+[2024-12-08 13:46:59,559] WARNING del_progressao() L145  Erro ao deletar progressão #'10', Progressão não encontrada na base :/ - call_trace=C:\Users\rafga\git\mvp-api\app.py L145 
+[2024-12-08 13:46:59,561] INFO _log() L97   127.0.0.1 - - [08/Dec/2024 13:46:59] "[33mDELETE /progressao?cod_mapa=10 HTTP/1.1[0m" 404 - - call_trace=c:\Users\rafga\git\mvp-api\.venv\Lib\site-packages\werkzeug\_internal.py L97  
+[2024-12-08 13:47:05,881] INFO _log() L97   127.0.0.1 - - [08/Dec/2024 13:47:05] "OPTIONS /progressao?cod_mapa=12 HTTP/1.1" 200 - - call_trace=c:\Users\rafga\git\mvp-api\.venv\Lib\site-packages\werkzeug\_internal.py L97  
+[2024-12-08 13:47:05,949] INFO _log() L97   127.0.0.1 - - [08/Dec/2024 13:47:05] "DELETE /progressao?cod_mapa=12 HTTP/1.1" 200 - - call_trace=c:\Users\rafga\git\mvp-api\.venv\Lib\site-packages\werkzeug\_internal.py L97  
+[2024-12-08 13:47:08,994] INFO _log() L97   127.0.0.1 - - [08/Dec/2024 13:47:08] "OPTIONS /progressao?cod_mapa=34 HTTP/1.1" 200 - - call_trace=c:\Users\rafga\git\mvp-api\.venv\Lib\site-packages\werkzeug\_internal.py L97  
+[2024-12-08 13:47:09,045] INFO _log() L97   127.0.0.1 - - [08/Dec/2024 13:47:09] "DELETE /progressao?cod_mapa=34 HTTP/1.1" 200 - - call_trace=c:\Users\rafga\git\mvp-api\.venv\Lib\site-packages\werkzeug\_internal.py L97  
+[2024-12-08 13:47:11,952] INFO _log() L97   127.0.0.1 - - [08/Dec/2024 13:47:11] "OPTIONS /progressao?cod_mapa=31 HTTP/1.1" 200 - - call_trace=c:\Users\rafga\git\mvp-api\.venv\Lib\site-packages\werkzeug\_internal.py L97  
+[2024-12-08 13:47:12,059] INFO _log() L97   127.0.0.1 - - [08/Dec/2024 13:47:12] "DELETE /progressao?cod_mapa=31 HTTP/1.1" 200 - - call_trace=c:\Users\rafga\git\mvp-api\.venv\Lib\site-packages\werkzeug\_internal.py L97  
+[2024-12-08 13:47:16,049] INFO _log() L97   127.0.0.1 - - [08/Dec/2024 13:47:16] "OPTIONS /progressao?cod_mapa=10 HTTP/1.1" 200 - - call_trace=c:\Users\rafga\git\mvp-api\.venv\Lib\site-packages\werkzeug\_internal.py L97  
+[2024-12-08 13:47:16,076] WARNING del_progressao() L145  Erro ao deletar progressão #'10', Progressão não encontrada na base :/ - call_trace=C:\Users\rafga\git\mvp-api\app.py L145 
+[2024-12-08 13:47:16,113] INFO _log() L97   127.0.0.1 - - [08/Dec/2024 13:47:16] "[33mDELETE /progressao?cod_mapa=10 HTTP/1.1[0m" 404 - - call_trace=c:\Users\rafga\git\mvp-api\.venv\Lib\site-packages\werkzeug\_internal.py L97  
+[2024-12-08 13:47:20,141] INFO _log() L97   127.0.0.1 - - [08/Dec/2024 13:47:20] "GET /progressoes HTTP/1.1" 200 - - call_trace=c:\Users\rafga\git\mvp-api\.venv\Lib\site-packages\werkzeug\_internal.py L97  
+[2024-12-08 13:47:21,038] INFO _log() L97   127.0.0.1 - - [08/Dec/2024 13:47:21] "GET /progressoes HTTP/1.1" 200 - - call_trace=c:\Users\rafga\git\mvp-api\.venv\Lib\site-packages\werkzeug\_internal.py L97  
+[2024-12-08 13:47:22,151] INFO _log() L97   127.0.0.1 - - [08/Dec/2024 13:47:22] "GET /progressoes HTTP/1.1" 200 - - call_trace=c:\Users\rafga\git\mvp-api\.venv\Lib\site-packages\werkzeug\_internal.py L97  
+[2024-12-08 13:47:23,374] INFO _log() L97   127.0.0.1 - - [08/Dec/2024 13:47:23] "GET /progressoes HTTP/1.1" 200 - - call_trace=c:\Users\rafga\git\mvp-api\.venv\Lib\site-packages\werkzeug\_internal.py L97  
+[2024-12-08 13:47:27,453] INFO _log() L97   127.0.0.1 - - [08/Dec/2024 13:47:27] "GET /progressoes HTTP/1.1" 200 - - call_trace=c:\Users\rafga\git\mvp-api\.venv\Lib\site-packages\werkzeug\_internal.py L97  
+[2024-12-08 13:52:49,180] INFO _log() L97   127.0.0.1 - - [08/Dec/2024 13:52:49] "GET /progressoes HTTP/1.1" 200 - - call_trace=c:\Users\rafga\git\mvp-api\.venv\Lib\site-packages\werkzeug\_internal.py L97  
+[2024-12-08 14:03:07,468] INFO _log() L97   127.0.0.1 - - [08/Dec/2024 14:03:07] "GET /progressoes HTTP/1.1" 200 - - call_trace=c:\Users\rafga\git\mvp-api\.venv\Lib\site-packages\werkzeug\_internal.py L97  
+[2024-12-08 14:03:36,723] INFO _log() L97   127.0.0.1 - - [08/Dec/2024 14:03:36] "POST /progressao HTTP/1.1" 200 - - call_trace=c:\Users\rafga\git\mvp-api\.venv\Lib\site-packages\werkzeug\_internal.py L97  
+[2024-12-08 14:03:44,835] INFO _log() L97   127.0.0.1 - - [08/Dec/2024 14:03:44] "OPTIONS /progressao?cod_mapa=10 HTTP/1.1" 200 - - call_trace=c:\Users\rafga\git\mvp-api\.venv\Lib\site-packages\werkzeug\_internal.py L97  
+[2024-12-08 14:03:44,859] INFO _log() L97   127.0.0.1 - - [08/Dec/2024 14:03:44] "DELETE /progressao?cod_mapa=10 HTTP/1.1" 200 - - call_trace=c:\Users\rafga\git\mvp-api\.venv\Lib\site-packages\werkzeug\_internal.py L97  
+[2024-12-08 14:03:50,256] INFO _log() L97   127.0.0.1 - - [08/Dec/2024 14:03:50] "POST /progressao HTTP/1.1" 200 - - call_trace=c:\Users\rafga\git\mvp-api\.venv\Lib\site-packages\werkzeug\_internal.py L97  
+[2024-12-08 14:03:58,775] INFO _log() L97   127.0.0.1 - - [08/Dec/2024 14:03:58] "POST /progressao HTTP/1.1" 200 - - call_trace=c:\Users\rafga\git\mvp-api\.venv\Lib\site-packages\werkzeug\_internal.py L97  
+[2024-12-08 14:10:00,068] INFO _log() L97   127.0.0.1 - - [08/Dec/2024 14:10:00] "OPTIONS /progressao?cod_mapa=2 HTTP/1.1" 200 - - call_trace=c:\Users\rafga\git\mvp-api\.venv\Lib\site-packages\werkzeug\_internal.py L97  
+[2024-12-08 14:10:00,142] INFO _log() L97   127.0.0.1 - - [08/Dec/2024 14:10:00] "DELETE /progressao?cod_mapa=2 HTTP/1.1" 200 - - call_trace=c:\Users\rafga\git\mvp-api\.venv\Lib\site-packages\werkzeug\_internal.py L97  
+[2024-12-08 14:10:03,838] INFO _log() L97   127.0.0.1 - - [08/Dec/2024 14:10:03] "OPTIONS /progressao?cod_mapa=1 HTTP/1.1" 200 - - call_trace=c:\Users\rafga\git\mvp-api\.venv\Lib\site-packages\werkzeug\_internal.py L97  
+[2024-12-08 14:10:03,858] INFO _log() L97   127.0.0.1 - - [08/Dec/2024 14:10:03] "DELETE /progressao?cod_mapa=1 HTTP/1.1" 200 - - call_trace=c:\Users\rafga\git\mvp-api\.venv\Lib\site-packages\werkzeug\_internal.py L97  
+[2024-12-08 16:15:20,023] INFO _log() L97   [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.1.10:5000 - call_trace=c:\Users\rafga\git\mvp-api\.venv\Lib\site-packages\werkzeug\_internal.py L97  
+[2024-12-08 16:15:20,025] INFO _log() L97   [33mPress CTRL+C to quit[0m - call_trace=c:\Users\rafga\git\mvp-api\.venv\Lib\site-packages\werkzeug\_internal.py L97  
+[2024-12-08 16:15:24,991] INFO _log() L97   127.0.0.1 - - [08/Dec/2024 16:15:24] "[32mGET / HTTP/1.1[0m" 302 - - call_trace=c:\Users\rafga\git\mvp-api\.venv\Lib\site-packages\werkzeug\_internal.py L97  
+[2024-12-08 16:15:25,100] INFO _log() L97   127.0.0.1 - - [08/Dec/2024 16:15:25] "GET /openapi/ HTTP/1.1" 200 - - call_trace=c:\Users\rafga\git\mvp-api\.venv\Lib\site-packages\werkzeug\_internal.py L97  
+[2024-12-08 16:15:25,333] INFO _log() L97   127.0.0.1 - - [08/Dec/2024 16:15:25] "[36mGET /openapi/swagger/images/swagger.svg HTTP/1.1[0m" 304 - - call_trace=c:\Users\rafga\git\mvp-api\.venv\Lib\site-packages\werkzeug\_internal.py L97  
+[2024-12-08 16:15:40,316] INFO _log() L97   127.0.0.1 - - [08/Dec/2024 16:15:40] "GET /openapi/swagger HTTP/1.1" 200 - - call_trace=c:\Users\rafga\git\mvp-api\.venv\Lib\site-packages\werkzeug\_internal.py L97  
+[2024-12-08 16:15:40,449] INFO _log() L97   127.0.0.1 - - [08/Dec/2024 16:15:40] "[36mGET /openapi/swagger/css/swagger-ui.css HTTP/1.1[0m" 304 - - call_trace=c:\Users\rafga\git\mvp-api\.venv\Lib\site-packages\werkzeug\_internal.py L97  
+[2024-12-08 16:15:42,059] INFO _log() L97   127.0.0.1 - - [08/Dec/2024 16:15:42] "[36mGET /openapi/swagger/js/swagger-ui-standalone-preset.js HTTP/1.1[0m" 304 - - call_trace=c:\Users\rafga\git\mvp-api\.venv\Lib\site-packages\werkzeug\_internal.py L97  
+[2024-12-08 16:15:44,308] INFO _log() L97   127.0.0.1 - - [08/Dec/2024 16:15:44] "[36mGET /openapi/swagger/js/swagger-ui-bundle.js HTTP/1.1[0m" 304 - - call_trace=c:\Users\rafga\git\mvp-api\.venv\Lib\site-packages\werkzeug\_internal.py L97  
+[2024-12-08 16:15:44,622] INFO _log() L97   127.0.0.1 - - [08/Dec/2024 16:15:44] "GET /openapi/openapi.json HTTP/1.1" 200 - - call_trace=c:\Users\rafga\git\mvp-api\.venv\Lib\site-packages\werkzeug\_internal.py L97  
+[2024-12-08 16:17:27,301] INFO _log() L97   127.0.0.1 - - [08/Dec/2024 16:17:27] "POST /progressao HTTP/1.1" 200 - - call_trace=c:\Users\rafga\git\mvp-api\.venv\Lib\site-packages\werkzeug\_internal.py L97  
+[2024-12-08 16:17:47,199] INFO _log() L97   127.0.0.1 - - [08/Dec/2024 16:17:47] "POST /progressao HTTP/1.1" 200 - - call_trace=c:\Users\rafga\git\mvp-api\.venv\Lib\site-packages\werkzeug\_internal.py L97  
+[2024-12-08 16:18:08,506] INFO _log() L97   127.0.0.1 - - [08/Dec/2024 16:18:08] "GET /progressoes HTTP/1.1" 200 - - call_trace=c:\Users\rafga\git\mvp-api\.venv\Lib\site-packages\werkzeug\_internal.py L97  
+[2024-12-08 16:18:39,809] INFO _log() L97   127.0.0.1 - - [08/Dec/2024 16:18:39] "DELETE /progressao?cod_mapa=1 HTTP/1.1" 200 - - call_trace=c:\Users\rafga\git\mvp-api\.venv\Lib\site-packages\werkzeug\_internal.py L97  
+[2024-12-08 16:18:51,316] INFO _log() L97   127.0.0.1 - - [08/Dec/2024 16:18:51] "GET /progressoes HTTP/1.1" 200 - - call_trace=c:\Users\rafga\git\mvp-api\.venv\Lib\site-packages\werkzeug\_internal.py L97  
