@@ -22,8 +22,7 @@ progressao_tag = Tag(name="Progressão",
 
 @app.get('/', tags=[home_tag])
 def home():
-    """Redireciona para /openapi, tela que permite a escolha do estilo 
-    de documentação.
+    """Redireciona para /openapi, swagger.
     """
     return redirect('/openapi')
 
@@ -46,7 +45,7 @@ def add_progressao(form: ProgressaoSchema):
     try:
         # criando conexão com a base
         session = Session()
-        # adicionando produto
+        # adicionando progressão
         session.add(progressao)
         # efetivando o camando de adição de novo item na tabela
         session.commit()
@@ -82,11 +81,11 @@ def get_progressoes():
     progressoes = session.query(Progressao).all()
 
     if not progressoes:
-        # se não há produtos cadastrados
+        # se não há progressões cadastradas
         return {"progressoes": []}, 200
     else:
         logger.debug(f"%d Progressões encontradas" % len(progressoes))
-        # retorna a representação de produto
+        # retorna a representação da progressão
         print(progressoes)
         return apresenta_progressoes(progressoes), 200
 
@@ -96,7 +95,7 @@ def get_progressoes():
 def get_progressao(query: ProgressaoBuscaSchema):
     """Faz a busca por uma progressão.
 
-    Retorna uma representação dos produtos e comentários associados.
+    Retorna uma representação das progressões.
     """
     progressao_cod_mapa = query.cod_mapa
     logger.debug(f"Coletando dados sobre a progressão #{progressao_cod_mapa}")
@@ -140,7 +139,7 @@ def del_progressao(query: ProgressaoBuscaSchema):
         logger.debug(f"Deletado progressão #{progressao_cod_mapa}")
         return {"message": "Progressão removida", "id": progressao_cod_mapa}
     else:
-        # se o produto não foi encontrado
+        # se a progressão não foi encontrada
         error_msg = "Progressão não encontrada na base :/"
         logger.warning(f"Erro ao deletar progressão #'{
                        progressao_cod_mapa}', {error_msg}")
