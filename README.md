@@ -7,11 +7,11 @@ Nessa proposta de MVP pretendemos criar uma solução para acompanhamento das pr
 
 As progressões são atividade/tarefas que devem ser realizadas pelos jovens a fim de desenvolverem as seguintes competências: física, intelectual, social, espiritual, caráter e afetiva.
 
-Embora exita um aplicativo para Android que permite o acompanhamento das progressões de cada jovem, não há funconalidade para a apresentação gráfica e consolidade das progressões de um grupo de jovens.
+Embora exista um aplicativo para Android que permite o acompanhamento das progressões de cada jovem, não há funconalidade para a apresentação gráfica e consolidade das progressões de um grupo de jovens.
 
 Essa apresentação facilitaria o diagnóstico de competências do jovens e auxiliaria na proposiçao de atividades para os jovens.
 
-Nesse MVP apresentamos a implentação da parte realtiva às Progressões.
+Nesse MVP apresentamos a implentação da parte relativa às Progressões.
 
 ### Modelo do Banco de Dados
 
@@ -30,7 +30,7 @@ Nesse MVP inciamos com a tabela Progressao.
 ```
 pasta_raiz\python -m venv .env
 ```
-Ativar o ab=mbiente virtual.
+Ativar o ambiente virtual.
 
 Para execução da API será necessária a instalação das bibliotecas listadas no `requirements.txt`.
 
