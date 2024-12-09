@@ -20,7 +20,7 @@ class ProgressaoBuscaSchema(BaseModel):
 
 
 class ListagemProgressoesSchema(BaseModel):
-    """ Define como uma listagem de produtos será retornada.
+    """ Define como uma listagem de progressões será retornada.
     """
     progressoes: List[ProgressaoSchema]
 

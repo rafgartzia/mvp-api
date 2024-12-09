@@ -17,12 +17,6 @@ class Progressao(Base):
     etapa = Column(String(20), nullable=False)
     data_insercao = Column(DateTime, default=datetime.now())
 
-    # Definição do relacionamento entre o produto e o comentário.
-    # Essa relação é implicita, não está salva na tabela 'produto',
-    # mas aqui estou deixando para SQLAlchemy a responsabilidade
-    # de reconstruir esse relacionamento.
-    # comentarios = relationship("Comentario")
-
     def __init__(self, cod_mapa: int, texto: str, ramo: str,
                  etapa: str, data_insercao: Union[DateTime, None] = None):
         """
@@ -43,8 +37,3 @@ class Progressao(Base):
         # se não for informada, será o data exata da inserção no banco
         if data_insercao:
             self.data_insercao = data_insercao
-
-   # def adiciona_comentario(self, comentario:Comentario):
-    #    """ Adiciona um novo comentário ao Produto
-     #   """
-      #  self.comentarios.append(comentario)
